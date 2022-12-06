@@ -40,15 +40,15 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \" \",\r\n    \"password\": \" \"\r\n}"
+					"raw": "{\r\n    \"id\": \"Bob Joe\",\r\n    \"password\": \"12345678\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:5000/signup",
+					"raw": "http://localhost:3000/signup",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5000",
+					"port": "3000",
 					"path": [
 						"signup"
 					]
