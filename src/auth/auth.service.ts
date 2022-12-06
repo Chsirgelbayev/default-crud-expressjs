@@ -9,7 +9,7 @@ import jwtService from '../jwt/jwt.service';
 import usersService from '../users/users.service';
 
 export default new (class AuthService {
-    public async signUp(signUpDto: UserEntity) {
+    public async signUp(signUpDto: SignUpDto) {
         const errors = await validate(plainToClass(SignUpDto, signUpDto));
 
         if (errors.length > 0) {
