@@ -12,7 +12,8 @@ const app = express();
 
 TypeOrmCreateConnection();
 
-app.use(morgan('dev'))
+app
+    .use(morgan('dev'))
     .use(express.json())
     .use(cookieRarser())
     .use(cors())
