@@ -8,26 +8,21 @@ import { logger } from './utils/logger';
 import { ErrorHandlerMiddleware } from './common/middlewares/error-handler.middleware';
 import { TypeOrmCreateConnection } from './lib/configuration/typeorm/config';
 
-const bootstrap = async () => {
-    const app = express();
+const app = express();
 
-    await TypeOrmCreateConnection();
+TypeOrmCreateConnection();
 
-    app
-        .use(morgan('dev'))
-        .use(express.json())
-        .use(cookieRarser())
-        .use(cors())
-        .use(authRoute)
-        .use('/file', filesRoute)
-        .use('/static', express.static('./static'))
-        .use(ErrorHandlerMiddleware.handle());
+app.use(morgan('dev'))
+    .use(express.json())
+    .use(cookieRarser())
+    .use(cors())
+    .use(authRoute)
+    .use('/file', filesRoute)
+    .use('/static', express.static('./static'))
+    .use(ErrorHandlerMiddleware.handle());
 
-    app.listen(3000, () => {
-        logger.info('Express application successfully started');
-    });
+app.listen(3000, () => {
+    logger.info('Express application successfully started');
+});
 
-    ErrorHandlerMiddleware.initializeUnhandledException();
-};
-
-void bootstrap();
+ErrorHandlerMiddleware.initializeUnhandledException();
