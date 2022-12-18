@@ -6,7 +6,7 @@ import authService from './auth.service';
 
 export default new (class AuthController {
     public signUp = asyncWrapper(
-        async (req: Request, res: Response, next: NextFunction) => {
+        async (req: Request, res: Response, next: NextFunction): Promise<void> => {
             const { accessToken, refreshToken, cookieSettings, user } =
                 await authService.signUp(req.body);
 
@@ -19,7 +19,7 @@ export default new (class AuthController {
     );
 
     public signIn = asyncWrapper(
-        async (req: Request, res: Response, next: NextFunction) => {
+        async (req: Request, res: Response, next: NextFunction): Promise<void> => {
             const { accessToken, refreshToken, cookieSettings, user } =
                 await authService.signIn(req.body);
 
@@ -32,7 +32,7 @@ export default new (class AuthController {
     );
 
     public refresh = asyncWrapper(
-        async (req: Request, res: Response, next: NextFunction) => {
+        async (req: Request, res: Response, next: NextFunction): Promise<void> => {
             const { accessToken, refreshToken, cookieSettings, user } =
                 await authService.refresh(req.cookies.refreshToken);
 
@@ -45,13 +45,13 @@ export default new (class AuthController {
     );
 
     public info = asyncWrapper(
-        async (req: ExpressRequest, res: Response, next: NextFunction) => {
+        async (req: ExpressRequest, res: Response, next: NextFunction): Promise<void> => {
             res.status(HttpStatus.OK).json({ user: req.user });
         }
     );
 
     public logout = asyncWrapper(
-        async (req: Request, res: Response, next: NextFunction) => {
+        async (req: Request, res: Response, next: NextFunction): Promise<void> => {
             res.clearCookie('refreshToken').status(HttpStatus.OK).end();
         }
     );

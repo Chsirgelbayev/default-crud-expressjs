@@ -1,11 +1,15 @@
 import { UserEntity } from '../lib/entity/user.entity';
-import { getRepository } from 'typeorm';
+import { Repository, getRepository } from 'typeorm';
 
 export default new (class UsersService {
-    public async findById(id: string): Promise<UserEntity> {
-        const userRepository = getRepository(UserEntity);
+    readonly userRepository: Repository<UserEntity>;
 
-        return await userRepository
+    constructor() {
+        this.userRepository = getRepository(UserEntity);
+    }
+
+    public async findById(id: string): Promise<UserEntity> {
+        return await this.userRepository
             .createQueryBuilder('user')
             .where({
                 id
@@ -14,16 +18,13 @@ export default new (class UsersService {
     }
 
     public async create(user: UserEntity): Promise<void> {
-        const userRepository = getRepository(UserEntity);
-        await userRepository.save(user);
+        await this.userRepository.save(user);
     }
 
     public async getUserByRefershToken(
         refreshToken: string
     ): Promise<UserEntity> {
-        const userRepository = getRepository(UserEntity);
-
-        return await userRepository
+        return await this.userRepository
             .createQueryBuilder('user')
             .select('user.refreshToken')
             .where({ refreshToken })
