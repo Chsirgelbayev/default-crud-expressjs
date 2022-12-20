@@ -2,7 +2,15 @@ import { UserEntity } from '../lib/entity/user.entity';
 import { getRepository } from 'typeorm';
 
 export default new (class UsersService {
+    userRepository: any
+
+    constructor() {
+        console.log(UserEntity)
+        this.userRepository =  getRepository(UserEntity)
+    }
+
     public async findById(id: string): Promise<UserEntity> {
+        console.log(UserEntity)
         const userRepository = getRepository(UserEntity);
 
         return await userRepository
