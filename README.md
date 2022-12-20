@@ -1,5 +1,5 @@
 # E-Commerce Website Template
-JWT-Authorization and file upload
+JWT Authorization and file upload
 
 ## Installation
 
