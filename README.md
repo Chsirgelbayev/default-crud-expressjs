@@ -1,3 +1,5 @@
+# Authorizing and downloading files
+
 ## Installation
 
 ```bash
