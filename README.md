@@ -1,4 +1,5 @@
 # E-Commerce Website Template
+Authorization and file upload
 
 ## Installation
 
