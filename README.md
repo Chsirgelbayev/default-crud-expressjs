@@ -1,4 +1,4 @@
-# Authorizing and downloading files
+# E-Commerce Website Template
 
 ## Installation
 
