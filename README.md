@@ -15,4 +15,4 @@ $ yarn start
 ```
 
 ## Тест
-Коллекция для импорта в Postman находится в файле erp.aero.postman_collection.json
+Коллекция для импорта в Postman находится в файле .postman_collection.json
